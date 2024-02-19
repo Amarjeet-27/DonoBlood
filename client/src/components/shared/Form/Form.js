@@ -99,7 +99,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               return (
                 <>
                   <InputType
-                    labelText={"email"}
+                    labelText={"Email"}
                     labelFor={"forEmail"}
                     inputType={"email"}
                     name={"email"}
@@ -152,7 +152,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   )}
 
                   <InputType
-                    labelText={"email"}
+                    labelText={"Email"}
                     labelFor={"forEmail"}
                     inputType={"email"}
                     name={"email"}
@@ -168,7 +168,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <InputType
-                    labelText={"website"}
+                    labelText={"Website"}
                     labelFor={"forWebsite"}
                     inputType={"text"}
                     name={"website"}
@@ -197,16 +197,22 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           }
         })()}
 
-        <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex flex-row justify-content-between align-content-center mt-4">
           {formType === "login" ? (
             <p>
               Not registerd yet ? Register
-              <Link to="/register"> Here !</Link>
+              <Link to="/register" style={{ textDecoration: "none" }}>
+                {" "}
+                Here !
+              </Link>
             </p>
           ) : (
             <p>
-              ALready Usser Please
-              <Link to="/login"> Login !</Link>
+              Already registerd, Please
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                {" "}
+                Login !
+              </Link>
             </p>
           )}
           <button className="btn btn-primary" type="submit">

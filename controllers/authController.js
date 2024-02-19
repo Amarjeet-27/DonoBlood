@@ -1,31 +1,34 @@
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/userModel.js";
 const register = async (req, res) => {
   try {
-    const existingUser = await UserModel.findOne({ email: req.body.email });
-    if (existingUser) {
+    const exisitingUser = await UserModel.findOne({ email: req.body.email });
+    // console.log("register");
+    const email = req.body.email;
+    if (exisitingUser) {
       return res.status(200).send({
         success: false,
-        message: "User allreasy exist",
+        message: "User ALready exists",
       });
     }
-
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    req.body.password = hashedPassword;
-
+    // const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    // req.body.password = hashedPassword;
+    //rest data
     const user = new UserModel(req.body);
     await user.save();
+
     return res.status(201).send({
       success: true,
-      message: "User registered successfully",
+      message: "User Registerd Successfully",
+      user,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
-      message: "Error in register page",
+      message: "Error In Register API",
       error,
     });
   }
@@ -49,17 +52,17 @@ const login = async (req, res) => {
       });
     }
 
-    const comparePassword = await bcrypt.compare(
-      req.body.password,
-      existingUser.password
-    );
+    // const comparePassword = await bcrypt.compare(
+    //   req.body.password,
+    //   existingUser.password
+    // );
 
-    if (!comparePassword) {
-      return res.status(500).send({
-        success: false,
-        message: "Invalid Credentials",
-      });
-    }
+    // if (!comparePassword) {
+    //   return res.status(500).send({
+    //     success: false,
+    //     message: "Invalid Credentials",
+    //   });
+    // }
 
     const token = jwt.sign(
       { userId: existingUser._id },
@@ -68,7 +71,6 @@ const login = async (req, res) => {
         expiresIn: "1d",
       }
     );
-
     res.status(200).send({
       success: true,
       message: "Login successfully",

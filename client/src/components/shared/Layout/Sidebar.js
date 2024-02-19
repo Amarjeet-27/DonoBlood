@@ -71,11 +71,11 @@ const Sidebar = () => {
           {(user?.role === "donar" || user?.role === "hospital") && (
             <div
               className={`menu-item ${
-                location.pathname === "/orgnaisation" && "active"
+                location.pathname === "/organisation" && "active"
               }`}
             >
               <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/orgnaisation">Orgnaisation</Link>
+              <Link to="/organisation">Organisation</Link>
             </div>
           )}
           {user?.role === "hospital" && (
@@ -98,19 +98,6 @@ const Sidebar = () => {
               <Link to="/donation">Donation</Link>
             </div>
           )}
-
-          {/* {userMenu.map((menu) => {
-            const isActive = location.pathname === menu.path;
-            return (
-              <div
-                className={`menu-item ${isActive && "active"}`}
-                key={menu.name}
-              >
-                <i className={menu.icon}></i>
-                <Link to={menu.path}>{menu.name}</Link>
-              </div>
-            );
-          })} */}
         </div>
       </div>
     </div>

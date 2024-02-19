@@ -53,10 +53,10 @@ const Analytics = () => {
   return (
     <>
       <Header />
-      <div className="d-flex flex-row flex-wrap">
+      <div className="d-flex justify-content-between flex-row flex-wrap px-5">
         {data?.map((record, i) => (
           <div
-            className="card m-2 p-1"
+            className="card m-2 p-1 mb-4"
             key={i}
             style={{ width: "18rem", backgroundColor: `${colors[i]}` }}
           >

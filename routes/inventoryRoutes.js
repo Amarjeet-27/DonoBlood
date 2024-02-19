@@ -27,7 +27,7 @@ router.post(
 );
 router.get("/get-donars", authMiddleware, getDonarsController);
 router.get("/get-hospitals", authMiddleware, getHospitalController);
-router.get("/get-organisations", authMiddleware, getOrganisationController);
+router.get("/get-organisation", authMiddleware, getOrganisationController);
 router.get(
   "/get-organisations-for-hospital",
   authMiddleware,
