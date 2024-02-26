@@ -1,18 +1,19 @@
 // import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/userModel.js";
+
 const register = async (req, res) => {
   try {
     const exisitingUser = await UserModel.findOne({ email: req.body.email });
-    // console.log("register");
+    console.log(req.body.email);
     const email = req.body.email;
-    if (exisitingUser) {
-      return res.status(200).send({
-        success: false,
-        message: "User ALready exists",
-      });
-    }
-    const salt = await bcrypt.genSalt(10);
+    // if (exisitingUser) {
+    //   return res.status(200).send({
+    //     success: false,
+    //     message: "User Already exists",
+    //   });
+    // }
+    // const salt = await bcrypt.genSalt(10);
     // const hashedPassword = await bcrypt.hash(req.body.password, salt);
     // req.body.password = hashedPassword;
     //rest data

@@ -72,3 +72,11 @@
   background-color: black !important;
   color: white !important;
 }
+
+.modal-content{
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  color: white;
+  font-family:sans-serif;
+   background: linear-gradient(#141e30,#243b55);
+}

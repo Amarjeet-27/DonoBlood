@@ -88,12 +88,12 @@ const Modal = () => {
                 </div>
               </div>
               <select
-                className="form-select"
+                className="form-select mb-3"
                 aria-label="Default select example"
                 onChange={(e) => setBloodGroup(e.target.value)}
               >
                 <option defaultValue={"Open this select menu"}>
-                  Open this select menu
+                  Select Blood Group
                 </option>
                 <option value={"O+"}>O+</option>
                 <option value={"O-"}>O-</option>
@@ -105,7 +105,9 @@ const Modal = () => {
                 <option value={"B-"}>B-</option>
               </select>
               <InputType
-                labelText={"Donar Email"}
+                labelText={
+                  inventoryType === "out" ? "Hospital Email" : "Donar Email"
+                }
                 labelFor={"donarEmail"}
                 inputType={"email"}
                 value={email}

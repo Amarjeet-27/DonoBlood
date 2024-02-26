@@ -219,6 +219,7 @@ const getHospitalController = async (req, res) => {
 
 const getOrganisationController = async (req, res) => {
   try {
+    console.log(req);
     const donar = req.body.userId;
     const orgId = await inventoryModel.distinct("organisation", { donar });
     const organisations = await UserModel.find({

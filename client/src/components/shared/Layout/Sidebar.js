@@ -95,7 +95,7 @@ const Sidebar = () => {
               }`}
             >
               <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/donation">Donation</Link>
+              <Link to="/donation">Your Donation</Link>
             </div>
           )}
         </div>

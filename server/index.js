@@ -8,7 +8,6 @@ import { authRoute } from "./routes/authRoutes.js";
 import { InventoryRoute } from "./routes/inventoryRoutes.js";
 import { AnalyticsRouter } from "./routes/analyticsRoute.js";
 import { AdminRouter } from "./routes/adminRoute.js";
-// import { AdminRouter } from "./routes/adminRoute.js";
 
 dotenv.config();
 connectDB();
@@ -16,7 +15,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-
+app.get("/", (req, res) => {
+  return res.send({
+    message: "This is testing page",
+  });
+});
 app.use("/api/v1/test", router);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/inventory", InventoryRoute);
