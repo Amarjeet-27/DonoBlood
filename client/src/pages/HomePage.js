@@ -18,7 +18,6 @@ const HomePage = () => {
       const { data } = await API.get("/inventory/get-inventory");
       if (data?.success) {
         setData(data?.inventory);
-        // console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -27,12 +26,16 @@ const HomePage = () => {
 
   useEffect(() => {
     getBloodRecords();
-  }, []);
+    {
+      user?.role === "admin" && navigate("/admin");
+    }
+    {
+      (user?.role === "donar" || user?.role === "hospital") &&
+        navigate("/organisation");
+    }
+  }, [user?.role]);
   return (
     <Layout>
-      {user?.role === "admin" && navigate("/admin")}
-      {(user?.role === "donar" || user?.role === "hospital") &&
-        navigate("/organisation")}
       {error && <span>{alert(error)}</span>}
       {loading ? (
         <Spinner />

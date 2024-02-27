@@ -18,7 +18,7 @@ const Consumer = () => {
       });
       if (data?.success) {
         setData(data?.inventory);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -36,9 +36,10 @@ const Consumer = () => {
           <thead>
             <tr>
               <th scope="col">Blood Group</th>
-              <th scope="col">Inventory TYpe</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Email</th>
+              <th scope="col">Quantity(ML)</th>
+              <th scope="col">Org Name</th>
+              <th scope="col">Org Email</th>
+              <th scope="col">Org Address</th>
               <th scope="col">Date</th>
             </tr>
           </thead>
@@ -46,10 +47,13 @@ const Consumer = () => {
             {data?.map((record) => (
               <tr key={record._id}>
                 <td>{record.bloodGroup}</td>
-                <td>{record.inventoryType}</td>
-                <td>{record.quantity}</td>
-                <td>{record.email}</td>
-                <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+                <td>
+                  {record.quantity} {" (ML)"}
+                </td>
+                <td>{record.organisation.organisationName}</td>
+                <td>{record.organisation.email}</td>
+                <td>{record.organisation.address}</td>
+                <td>{moment(record.createdAt).format("DD/MM/YYYY")}</td>
               </tr>
             ))}
           </tbody>

@@ -102,12 +102,11 @@ const getInventoryHospitalController = async (req, res) => {
     const inventory = await inventoryModel
       .find(req.body.filters)
       .populate("donar")
-      .populate("hospital")
       .populate("organisation")
       .sort({ createdAt: -1 });
     return res.status(200).send({
       success: true,
-      message: "get all reocrds successfully",
+      message: "get all records successfully",
       inventory,
     });
   } catch (error) {
@@ -221,10 +220,8 @@ const getOrganisationController = async (req, res) => {
   try {
     console.log(req);
     const donar = req.body.userId;
-    const orgId = await inventoryModel.distinct("organisation", { donar });
-    const organisations = await UserModel.find({
-      _id: { $in: orgId },
-    });
+    // const orgId = await inventoryModel.distinct("organisation", { donar });
+    const organisations = await UserModel.find({ role: "organisation" });
 
     return res.status(200).send({
       success: true,
@@ -243,9 +240,9 @@ const getOrganisationController = async (req, res) => {
 const getOrganisationForHospitalController = async (req, res) => {
   try {
     const hospital = req.body.userId;
-    const orgId = await inventoryModel.distinct("organisation", { hospital });
+
     const organisations = await UserModel.find({
-      _id: { $in: orgId },
+      role: "organisation",
     });
 
     return res.status(200).send({

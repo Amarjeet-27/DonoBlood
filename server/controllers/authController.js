@@ -1,21 +1,21 @@
-// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/userModel.js";
 
 const register = async (req, res) => {
   try {
     const exisitingUser = await UserModel.findOne({ email: req.body.email });
-    console.log(req.body.email);
+    // console.log(req.body.email);
     const email = req.body.email;
-    // if (exisitingUser) {
-    //   return res.status(200).send({
-    //     success: false,
-    //     message: "User Already exists",
-    //   });
-    // }
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    // req.body.password = hashedPassword;
+    if (exisitingUser) {
+      return res.status(200).send({
+        success: false,
+        message: "User Already exists",
+      });
+    }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    req.body.password = hashedPassword;
     //rest data
     const user = new UserModel(req.body);
     await user.save();
@@ -48,22 +48,22 @@ const login = async (req, res) => {
     }
     if (existingUser.role !== req.body.role) {
       return res.status(500).send({
-        success: true,
+        success: false,
         message: "Role does not match",
       });
     }
 
-    // const comparePassword = await bcrypt.compare(
-    //   req.body.password,
-    //   existingUser.password
-    // );
+    const comparePassword = await bcrypt.compare(
+      req.body.password,
+      existingUser.password
+    );
 
-    // if (!comparePassword) {
-    //   return res.status(500).send({
-    //     success: false,
-    //     message: "Invalid Credentials",
-    //   });
-    // }
+    if (!comparePassword) {
+      return res.status(500).send({
+        success: false,
+        message: "Invalid Credentials",
+      });
+    }
 
     const token = jwt.sign(
       { userId: existingUser._id },
