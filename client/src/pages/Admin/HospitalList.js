@@ -9,7 +9,7 @@ const HospitalList = () => {
   const getDonars = async () => {
     try {
       const { data } = await API.get("/admin/hospital-list");
-      console.log(data);
+
       if (data?.success) {
         setData(data?.hospitalData);
       }
@@ -46,6 +46,7 @@ const HospitalList = () => {
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
+            <th scope="col">Address</th>
             <th scope="col">Date</th>
             <th scope="col">Action</th>
           </tr>
@@ -56,6 +57,7 @@ const HospitalList = () => {
               <td>{record.hospitalName}</td>
               <td>{record.email}</td>
               <td>{record.phone}</td>
+              <td>{record.address}</td>
               <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
               <td>
                 <button

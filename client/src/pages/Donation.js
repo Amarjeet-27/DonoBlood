@@ -18,7 +18,7 @@ const Donation = () => {
       });
       if (data?.success) {
         setData(data?.inventory);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.log(error);
