@@ -38,8 +38,29 @@ const Sidebar = () => {
                 <i className="fa-solid fa-hospital"></i>
                 <Link to="/hospital">Hospital</Link>
               </div>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/create-messagefor-donar" && "active"
+                }`}
+              >
+                <i className="fa-solid fa-hospital"></i>
+                <Link to="/create-messagefor-donar">
+                  RequestBloodFromDonars
+                </Link>
+              </div>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/get-messagefrom-hospital" && "active"
+                }`}
+              >
+                <i className="fa-solid fa-hospital"></i>
+                <Link to="/get-messagefrom-hospital">
+                  NotificationFromHospitals
+                </Link>
+              </div>
             </>
           )}
+
           {user?.role === "admin" && (
             <>
               <div
@@ -79,24 +100,44 @@ const Sidebar = () => {
             </div>
           )}
           {user?.role === "hospital" && (
-            <div
-              className={`menu-item ${
-                location.pathname === "/consumer" && "active"
-              }`}
-            >
-              <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/consumer">Consumer</Link>
-            </div>
+            <>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/consumer" && "active"
+                }`}
+              >
+                <i className="fa-sharp fa-solid fa-building-ngo"></i>
+                <Link to="/consumer">BloodTakenFromOrg</Link>
+              </div>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/create-messagefor-org" && "active"
+                }`}
+              >
+                <i className="fa-solid fa-hospital"></i>
+                <Link to="/create-messagefor-org">CreateReqFororg</Link>
+              </div>
+            </>
           )}
           {user?.role === "donar" && (
-            <div
-              className={`menu-item ${
-                location.pathname === "/donation" && "active"
-              }`}
-            >
-              <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/donation">Your Donation</Link>
-            </div>
+            <>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/donation" && "active"
+                }`}
+              >
+                <i className="fa-sharp fa-solid fa-building-ngo"></i>
+                <Link to="/donation">Your Donation</Link>
+              </div>
+              <div
+                className={`menu-item ${
+                  location.pathname === "/get-messagefrom-org" && "active"
+                }`}
+              >
+                <i className="fa-solid fa-hospital"></i>
+                <Link to="/get-messagefrom-org">RequestFromOrg</Link>
+              </div>
+            </>
           )}
         </div>
       </div>

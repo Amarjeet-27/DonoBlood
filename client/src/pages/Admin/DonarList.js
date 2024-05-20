@@ -5,6 +5,7 @@ import API from "../../services/API";
 
 const DonarList = () => {
   const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   //find donar records
   const getDonars = async () => {
     try {
@@ -17,11 +18,6 @@ const DonarList = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    getDonars();
-  }, []);
-
   //DELETE FUNCTION
   const handelDelete = async (id) => {
     try {
@@ -32,12 +28,15 @@ const DonarList = () => {
       if (!answer) return;
       const { data } = await API.delete(`/admin/delete-donar/${id}`);
       alert(data?.message);
-      window.location.reload();
+      setRefresh(!refresh);
     } catch (error) {
       console.log(error);
     }
   };
 
+  useEffect(() => {
+    getDonars();
+  }, [refresh]);
   return (
     <Layout>
       <table className="table ">

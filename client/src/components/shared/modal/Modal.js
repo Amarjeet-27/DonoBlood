@@ -9,6 +9,7 @@ const Modal = () => {
   const [quantity, setQuantity] = useState(0);
   const [email, setEmail] = useState("");
   const { user } = useSelector((state) => state.auth);
+  // const [refresh, setRefresh] = useState(false);
   // handle modal data
   const handleModalSubmit = async () => {
     try {

@@ -5,6 +5,7 @@ import API from "../../services/API";
 
 const HospitalList = () => {
   const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   //find donar records
   const getDonars = async () => {
     try {
@@ -17,11 +18,6 @@ const HospitalList = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    getDonars();
-  }, []);
-
   //DELETE FUNCTION
   const handelDelete = async (id) => {
     try {
@@ -32,11 +28,15 @@ const HospitalList = () => {
       if (!answer) return;
       const { data } = await API.delete(`/admin/delete-donar/${id}`);
       alert(data?.message);
-      window.location.reload();
+      setRefresh(!refresh);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getDonars();
+  }, [refresh]);
 
   return (
     <Layout>
@@ -58,7 +58,7 @@ const HospitalList = () => {
               <td>{record.email}</td>
               <td>{record.phone}</td>
               <td>{record.address}</td>
-              <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+              <td>{moment(record.createdAt).format("DD/MM/YYYY")}</td>
               <td>
                 <button
                   className="btn btn-danger"

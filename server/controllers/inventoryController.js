@@ -12,14 +12,6 @@ const createInventoryController = async (req, res) => {
     if (!user) {
       throw new Error("User not found");
     }
-    // if (inventoryType === "in" && user.role !== "donar") {
-    //   throw new Error("Not a donar");
-    // }
-
-    // if (inventoryType === "out" && user.role !== "hospital") {
-    //   throw new Error("Not a hospital");
-    // }
-
     if (req.body.inventoryType == "out") {
       const requestedBloodGroup = req.body.bloodGroup;
       const requestedQuantityOfBlood = req.body.quantity;
@@ -79,10 +71,9 @@ const createInventoryController = async (req, res) => {
     }
     const inventory = new inventoryModel(req.body);
     await inventory.save();
-    console.log("User email", email);
+    // console.log("User email", email);
     return res.status(201).send({
       success: true,
-
       message: "New Blood Record added",
     });
   } catch (error) {
@@ -112,7 +103,7 @@ const getInventoryHospitalController = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).send({
-      success: true,
+      success: false,
       message: "Error in get All inventory",
       error,
     });

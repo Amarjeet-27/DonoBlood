@@ -1,6 +1,6 @@
 const testController = (req, res) => {
   res.send({
-    message: "This is testing function",
+    message: "This is testing function for us",
   });
 };
 

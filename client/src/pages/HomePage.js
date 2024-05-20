@@ -68,9 +68,7 @@ const HomePage = () => {
                     <td>{record.inventoryType}</td>
                     <td>{record.quantity} (ML)</td>
                     <td>{record.email}</td>
-                    <td>
-                      {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
-                    </td>
+                    <td>{moment(record.createdAt).format("DD/MM/YYYY")}</td>
                   </tr>
                 ))}
               </tbody>

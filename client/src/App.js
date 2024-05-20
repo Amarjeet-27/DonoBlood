@@ -16,6 +16,10 @@ import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
 import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
+import CreateRequestForDonar from "./pages/Dashboard/CreateRequestForDonar";
+import CreateRequestForOrg from "./pages/Dashboard/CreateRequestForOrg";
+import GetMessageFromOrg from "./pages/Dashboard/GetMessageFromOrg";
+import GetMessageFromHospital from "./pages/Dashboard/GetMessageFromHospital";
 function App() {
   return (
     <>
@@ -59,6 +63,38 @@ function App() {
           element={
             <ProtectedRoute>
               <Hospitals />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/get-messagefrom-org"
+          element={
+            <ProtectedRoute>
+              <GetMessageFromOrg />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/get-messagefrom-hospital"
+          element={
+            <ProtectedRoute>
+              <GetMessageFromHospital />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create-messagefor-org"
+          element={
+            <ProtectedRoute>
+              <CreateRequestForOrg />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create-messagefor-donar"
+          element={
+            <ProtectedRoute>
+              <CreateRequestForDonar />
             </ProtectedRoute>
           }
         />
