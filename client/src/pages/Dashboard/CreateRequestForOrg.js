@@ -31,7 +31,7 @@ const CreateRequestForOrg = () => {
     try {
       const { data } = await API.get("/message/get-previousReqBy-hospital");
       if (data?.success) {
-        console.log(data);
+        // console.log(data);
         setPreviousPost(data?.data);
       } else {
         alert(data?.message);
@@ -49,7 +49,7 @@ const CreateRequestForOrg = () => {
     <Layout>
       <div className="p-5">
         <div className="">
-          <h3>Request for Blood from Organisation</h3>
+          <h3>Request Blood from Organisations</h3>
           <div className="" style={{ width: 1000 }}>
             <textarea
               style={{ display: "block", marginBottom: 12 }}
@@ -77,11 +77,12 @@ const CreateRequestForOrg = () => {
             <div
               className=""
               style={{
-                backgroundColor: "gray",
+                backgroundColor: "#2e3200",
                 marginBottom: 10,
                 padding: 10,
                 borderRadius: 6,
                 fontSize: 15,
+                color:"white"
               }}
               key={ind}
             >

@@ -30,9 +30,9 @@ const Analytics = () => {
   };
 
   //lifrecycle method
-  useEffect(() => {
-    getBloodGroupData();
-  }, []);
+  // useEffect(() => {
+    
+  // }, []);
 
   //get function
   const getBloodRecords = async () => {
@@ -40,7 +40,7 @@ const Analytics = () => {
       const { data } = await API.get("/inventory/get-recent-inventory");
       if (data?.success) {
         setInventoryData(data?.inventory);
-        console.log(data);
+        // console.log(data);
       }
     } catch (error) {
       console.log(error);
@@ -48,6 +48,7 @@ const Analytics = () => {
   };
 
   useEffect(() => {
+    getBloodGroupData();
     getBloodRecords();
   }, []);
   return (

@@ -31,7 +31,7 @@ const CreateRequestForDonar = () => {
     try {
       const { data } = await API.get("/message/get-previousReqBy-org");
       if (data?.success) {
-        console.log(data);
+        // console.log(data);
         setPreviousPost(data?.data);
       } else {
         alert(data?.message);
@@ -48,7 +48,7 @@ const CreateRequestForDonar = () => {
     <Layout>
       <div className="p-5">
         <div className="">
-          <h3>Request for Blood</h3>
+          <h3>Request Donars for Blood</h3>
           <div className="" style={{ width: 1000 }}>
             <textarea
               style={{ display: "block", marginBottom: 12 }}

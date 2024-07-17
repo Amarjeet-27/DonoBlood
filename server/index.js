@@ -11,24 +11,19 @@ import { AdminRouter } from "./routes/adminRoute.js";
 import { MessageRouter } from "./routes/message.js";
 
 dotenv.config();
-connectDB();
+connectDB(); 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-app.get("/", (req, res) => {
-  return res.send({
-    message: "This is testing page",
-  });
-});
-app.use("/api/v1/test", router);
+app.use("/", router);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/inventory", InventoryRoute);
 app.use("/api/v1/analytics", AnalyticsRouter);
 app.use("/api/v1/admin", AdminRouter);
 app.use("/api/v1/message", MessageRouter);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on  ${PORT}`);
 });

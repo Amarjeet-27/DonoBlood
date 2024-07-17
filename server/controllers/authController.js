@@ -5,12 +5,12 @@ import UserModel from "../models/userModel.js";
 const register = async (req, res) => {
   try {
     const exisitingUser = await UserModel.findOne({ email: req.body.email });
-    // console.log(req.body.email);
+    console.log(req.body.email);
     const email = req.body.email;
     if (exisitingUser) {
       return res.status(200).send({
         success: false,
-        message: "User Already exists",
+        message: "User Already exists", 
       });
     }
     const salt = await bcrypt.genSalt(10);
@@ -68,9 +68,7 @@ const login = async (req, res) => {
     const token = jwt.sign(
       { userId: existingUser._id },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "1d",
-      }
+      
     );
     res.status(200).send({
       success: true,
@@ -91,6 +89,7 @@ const login = async (req, res) => {
 
 const currentUserController = async (req, res) => {
   try {
+    // this userId which is present in req is obtained from authMiddleware which as transfered by login 
     const user = await UserModel.findOne({ _id: req.body.userId });
     return res.status(200).send({
       success: true,

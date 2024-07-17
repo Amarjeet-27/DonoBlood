@@ -3,9 +3,13 @@ import { useDispatch } from "react-redux";
 import API from "../../services/API";
 import { getCurrentUser } from "../../redux/features/auth/authActions";
 import { Navigate } from "react-router-dom";
-const ProtectedRoute = ({ children }) => {
-  const dispatch = useDispatch();
 
+
+
+
+const ProtectedRoute = ({ children }) => {
+  
+  const dispatch = useDispatch();
   //get user current
   const getUser = async () => {
     try {

@@ -24,13 +24,14 @@ const Donation = () => {
       console.log(error);
     }
   };
-
+ 
   useEffect(() => {
     getDonars();
   }, []);
 
   return (
     <Layout>
+      {/* <h2>Blood Taken from Ogranisations </h2> */}
       <div className="container mt-4">
         <table className="table">
           <thead>

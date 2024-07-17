@@ -7,12 +7,12 @@ const token = localStorage.getItem("token")
 
 const initialState = {
   loading: false,
-  user: null,
+  user: null, 
   token,
-  error: null,
+  error: null, 
 };
 
-const authSlice = createSlice({
+const authSlice = createSlice({ 
   name: "auth",
   initialState: initialState,
   reducers: {},

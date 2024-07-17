@@ -10,7 +10,8 @@ const authMiddleware = async (req, res, next) => {
           message: "Auth failed",
         });
       } else {
-        req.body.userId = decode.userId;
+        // console.log(decode);
+        req.body.userId = decode.userId; 
         next();
       }
     });

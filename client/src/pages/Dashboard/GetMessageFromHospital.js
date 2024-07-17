@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
-
+import moment from "moment";
 const GetMessageFromHospital = () => {
   const [message, setMessage] = useState([]);
 
@@ -31,9 +31,10 @@ const GetMessageFromHospital = () => {
         <h2>Blood Requests from Hospitals</h2>
         {message?.map((record, ind) => (
           <div
+            key={ind}
             className=""
             style={{
-              backgroundColor: "#A8CD9F",
+              backgroundColor: "#2e3200",
               marginBottom: 20,
               borderRadius: 5,
             }}
@@ -41,15 +42,35 @@ const GetMessageFromHospital = () => {
             <div
               className=""
               style={{
-                backgroundColor: "#E2F4C5",
-                marginBottom: 10,
+                backgroundColor: "#2e3200",
+                color: "white",
+                marginBottom: 15,
+                marginTop: 15,
                 padding: 10,
                 fontSize: 15,
+                borderRadius: 10,
               }}
               key={ind}
             >
               <span style={{ fontSize: 15, fontWeight: 700 }}>DETAILS</span> :{" "}
               {record.message}
+              <hr />
+              <p>
+                <span style={{ marginRight: 20 }}>
+                  Name : {record.hospitalId.hospitalName}
+                </span>
+                <span style={{ marginRight: 20 }}>
+                  Address : {record.hospitalId.address}
+                </span>
+                <span style={{ marginRight: 20 }}>
+                  Phone.No: {record.hospitalId.phone}
+                </span>
+                <span style={{ marginRight: 20 }}>
+                  Phone.No:{" "}
+                  {moment(record.createdAt).format("DD/MM/YYYY")}
+                </span>
+                Email: {record.hospitalId.email}
+              </p>
             </div>
           </div>
         ))}

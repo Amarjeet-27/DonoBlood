@@ -1,7 +1,7 @@
 import React, { useEffect, useInsertionEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
-
+import moment from "moment";
 const GetMessageFromOrg = () => {
   const [message, setMessage] = useState([]);
 
@@ -30,44 +30,51 @@ const GetMessageFromOrg = () => {
       <div className="" style={{ margin: 10 }}>
         <h2>Blood Request from Organisation</h2>
         {message?.map((record, ind) => (
+          
           <div
             className=""
             style={{
-              backgroundColor: "#A8CD9F",
+              backgroundColor: "#2e3200",
               marginBottom: 20,
-              borderRadius: 6,
+              borderRadius: 5,
+              paddingRight: 10,
+              paddingLeft: 10,
             }}
           >
-            <table className="table" style={{ marginBottom: 0 }}>
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone</th>
-                  <th scope="col">Address</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{record.organisationId.organisationName}</td>
-                  <td>{record.organisationId.email}</td>
-                  <td>{record.organisationId.phone}</td>
-                  <td>{record.organisationId.address}</td>
-                </tr>
-              </tbody>
-            </table>
             <div
               className=""
               style={{
-                backgroundColor: "#E2F4C5",
-                marginBottom: 10,
+                backgroundColor: "#2e3200",
+                color: "white",
+                marginBottom: 15,
+                marginTop: 15,
                 padding: 10,
                 fontSize: 15,
+                borderRadius: 10,
               }}
               key={ind}
             >
               <span style={{ fontSize: 15, fontWeight: 700 }}>DETAILS</span> :{" "}
               {record.message}
+              <hr />
+              <p style={{ color: "white" }}>
+                <span style={{ marginRight: 20 }}>
+                  Name:- {record.organisationId.organisationName}
+                  
+                </span>
+                <span style={{ marginRight: 20 }}>
+                  Address:- {record.organisationId.address}
+                </span>
+                <span style={{ marginRight: 20 }}>
+                  Email:- {record.organisationId.email}
+                </span>
+                <span style={{ marginRight: 20 }}>
+                  Phone.No:- {record.organisationId.phone}
+                </span>
+                <span style={{ marginRight: 20 }}>
+                 RequestedAt:- {moment(record.createdAt).format("h:mm a DD/MM/YYYY")}
+                </span>
+              </p>
             </div>
           </div>
         ))}

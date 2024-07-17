@@ -38,6 +38,7 @@ const OrganisationPage = () => {
 
   return (
     <Layout>
+      <h2 style={{marginLeft:18, marginTop:10}}>Lists of all the Organisations</h2>
       <div className="container mt-4">
         <table className="table ">
           <thead>

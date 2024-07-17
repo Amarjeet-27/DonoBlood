@@ -13,8 +13,8 @@ import {
 
 const router = express.Router();
 
-router.post("/create-inventory", authMiddleware, createInventoryController);
 router.get("/get-inventory", authMiddleware, getInventoryController);
+router.post("/create-inventory", authMiddleware, createInventoryController);
 router.get(
   "/get-recent-inventory",
   authMiddleware,
