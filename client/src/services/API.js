@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: `${"http://localhost:3001/api/v1"}` });
+const API = axios.create({ baseURL: `${process.env.REACT_APP_BASE_URL}` });
 // alert(process.env.REACT_APP_BASE_URL);
 
 API.interceptors.request.use((req) => {
